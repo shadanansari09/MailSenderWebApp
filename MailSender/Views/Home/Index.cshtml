@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Enter your name and we'll reverse it for You'</p>
+
+    <input id="usrtxt" type="text" name="name" placeholder="Enter Your Name" />
+    <button id="btnsub" type="submit">Submit</button>
+
+
+ 
+</div>
+<div class="text-center">
+    <h6 id="result" class="display-4"></h6>
+    
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+            $("#btnsub").click(function(event){
+                event.preventDefault();
+                let userName = $("#usrtxt").val();
+               $.ajax({
+                    url: `https://localhost:7268/api/rev/${userName}`,
+                    type: 'GET',
+                    success: function(response){
+                        $("#result").text(response);
+                    },
+                     error: function(xhr, status, error){
+                        console.error("AJAX Error:", status, error);
+                        $("#result").text("An error occurred");
+                    }
+                })
+            });
+        });
+
+    </script>
+}

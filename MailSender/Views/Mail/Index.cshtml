@@ -1,0 +1,22 @@
+﻿<div class="container">
+  
+    <div class="text-lg-center text-decoration-underline">
+        <h3>Sending Applications like i'm XP farming XD</h3>
+    </div>
+    <div class="text-center mt-5">
+        <form method="post" asp-action="Send" asp-controller="Mail">
+            <input name="companyName" class="col-lg-3" required placeholder="Company Name" />
+            <input name="recAdd" class="col-lg-3" type="email" required placeholder="email address of recipient"/>
+        <button class="btn-primary" type="submit">Send</button>
+        </form>
+    </div>
+    @{
+        if (TempData["message"] != null)
+        {
+            <div class="m-lg-5">
+                <h4 class="text-white bg-success text-lg-center">@TempData["message"]</h4>
+            </div>
+        }
+
+    }
+</div>
